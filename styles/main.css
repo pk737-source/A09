@@ -142,6 +142,9 @@ main {
 section {
 	flex-basis: 75%;
 	padding-left: .5em;
+	& ul {
+		list-style-type: circle;
+	}
 	& img {
 		width: clamp(100px, 50%, 250px);
 		float: right;
