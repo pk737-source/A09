@@ -2,6 +2,9 @@
 :root {
 	--accent-color: #800000;  /* could also be coded #800 */
 	--gradient-color: #f6bb73;
+	--menu-light-color: white;
+	--menu-mid-color: antiquewhite;
+	--menu-dark-color: #4d0000;
 }
 
 /* reset */
@@ -63,10 +66,66 @@ header {
 	}
 }
 
+/* the styles for the navigation bar */
+.navbar {
+	background-color: var(--accent-color);
+	clear: left;
+	& a {
+		display: block;
+		padding: 1em;
+		text-decoration: none;
+		color: var(--menu-light-color);
+		margin: 0 1px 2px;
+	}
+	& a:hover, & a:focus, & a.current {
+		background-color: var(--menu-mid-color);
+		color: var(--menu-dark-color);
+	}
+	& ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+}
+
+/* the styles for the menu */
+.menu {
+	display: flex;
+	flex-wrap: wrap;
+	& li {
+		flex-basis: 20%;
+		text-align: center;
+	}
+	/* the menu item that contains a submenu */
+	& li:has(.submenu) {
+		position: relative;
+		& small {
+			padding-left: .5em;
+		}
+		&:hover .submenu {
+			display: block;
+		}
+	}
+}
+.menu > li:first-child a { margin-left: 0; }
+.menu > li:last-child a { margin-right: 0; }
+
+/* the styles for the submenu */
+.submenu {
+	position: absolute;
+	left: 0;
+	right: 0;
+	background-color: var(--accent-color);
+	color: var(--menu-light-color);
+	display: none;
+	& > li a {
+		margin: 0 2px 2px;
+	}
+}
+
 /* the styles for the main content */
 main {
 	display: flex;
-	clear: left;
 	padding: 0 1em 1em;
 	& blockquote {
 		font-style: italic;
